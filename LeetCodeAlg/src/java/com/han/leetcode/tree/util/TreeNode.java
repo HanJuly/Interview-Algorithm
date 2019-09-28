@@ -1,4 +1,4 @@
-package com.han.leetcode.tree;
+package com.han.leetcode.tree.util;
 
 public class TreeNode<T> {
     private TreeNode left;
@@ -6,6 +6,10 @@ public class TreeNode<T> {
     private T value;
 
     public TreeNode() {
+    }
+
+    public TreeNode(T value) {
+        this.value = value;
     }
 
     public TreeNode(TreeNode left, TreeNode right, T value) {

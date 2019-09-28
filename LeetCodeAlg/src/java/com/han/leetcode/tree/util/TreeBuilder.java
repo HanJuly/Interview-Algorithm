@@ -1,6 +1,7 @@
-package com.han.leetcode.tree;
+package com.han.leetcode.tree.util;
 
-public class TreeBuilder {
+public class
+TreeBuilder {
 
     public static <T> TreeNode<T> builder(T[] val) {
         TreeNode<T> root = new TreeNode<T>();
@@ -44,13 +45,24 @@ public class TreeBuilder {
         if (root == null)
             return;
         if (root.getLeft() != null)
-            System.out.println(root.getLeft().getValue().toString());
+            System.out.print(root.getLeft().getValue().toString() + ",");
         if (root.getRight() != null)
-            System.out.println(root.getRight().getValue().toString());
+            System.out.print(root.getRight().getValue().toString() + ",");
 
         if (root.getRight() == null && root.getLeft() == null)
             return;
         lookThrough(root.getLeft());
         lookThrough(root.getRight());
     }
+
+    public static <T> void lookThrough(TreeNode<T> root, int bottomNodes) {
+        int wdith = bottomNodes + 1;
+        System.out.print(root.getValue());
+        System.out.println();
+        lookThrough(root.getLeft(),bottomNodes/2);
+        lookThrough(root.getRight(),bottomNodes/2);
+
+    }
+
+
 }
