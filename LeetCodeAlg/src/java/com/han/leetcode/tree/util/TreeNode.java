@@ -18,7 +18,7 @@ public class TreeNode<T> {
         this.value = value;
     }
 
-    public TreeNode getLeft() {
+    public TreeNode<T> getLeft() {
         return left;
     }
 
@@ -26,7 +26,7 @@ public class TreeNode<T> {
         this.left = left;
     }
 
-    public TreeNode getRight() {
+    public TreeNode<T> getRight() {
         return right;
     }
 
