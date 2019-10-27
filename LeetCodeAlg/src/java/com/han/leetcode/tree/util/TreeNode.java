@@ -1,4 +1,4 @@
-package com.han.leetcode.tree;
+package com.han.leetcode.tree.util;
 
 public class TreeNode<T> {
     private TreeNode left;
