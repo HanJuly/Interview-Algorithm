@@ -16,12 +16,12 @@ TreeBuilder {
         int rightIndex = 2 * index + 2;
         TreeNode<T> right = null;
         TreeNode<T> left = null;
-        if (leftIndex < val.length) {
+        if (leftIndex < val.length && val[leftIndex] != null) {
             left = new TreeNode<T>();
             left.setValue(val[leftIndex]);
         }
 
-        if (rightIndex < val.length) {
+        if (rightIndex < val.length && val[rightIndex] != null) {
             right = new TreeNode<T>();
             right.setValue(val[rightIndex]);
         }
