@@ -19,7 +19,7 @@ package com.han.leetcode.array;
  * <p>
  * 1.首先放弃查找的方式
  * 2.使用hash方式
- * 3.
+ * 3.hash算法使用字符减去a的asc码的值
  */
 public class CharDifferentPostion {
     String s = "anagrx", t = "nagara";
