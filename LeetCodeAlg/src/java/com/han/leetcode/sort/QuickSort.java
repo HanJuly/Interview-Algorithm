@@ -7,6 +7,7 @@ import java.util.Random;
  * 1.首先单独处理子集
  * 2.使用子集的基准值作为mid
  * 3.排序方式：交换并移动来表示插入
+ * 4.先排序再拆分
  */
 public class QuickSort {
     public static void main(String[] args) {
