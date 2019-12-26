@@ -3,6 +3,11 @@ package com.han.leetcode.sort;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * 1.首先单独处理子集
+ * 2.使用子集的基准值作为mid
+ * 3.排序方式：交换并移动来表示插入
+ */
 public class QuickSort {
     public static void main(String[] args) {
         int[] nums = {1,2,4,1,0,8,2,3,6,9};
@@ -13,7 +18,7 @@ public class QuickSort {
     }
 
     private void split(int[] nums,int l,int h){
-        if(l <= h){
+        if(l >= h){
             return;
         }
         int baseIndex = sort(nums,l,h);
