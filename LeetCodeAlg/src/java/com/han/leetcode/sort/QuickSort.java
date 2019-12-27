@@ -8,6 +8,9 @@ import java.util.Random;
  * 2.使用子集的基准值作为mid
  * 3.排序方式：交换并移动来表示插入
  * 4.先排序再拆分
+ * 5.假设基准值最后存入l的位置
+ * 6.这里涉及到三个数的，基准值在中间，所以交换两边值然后最后处理基准值
+ * 7.然而插入排序是涉及两个交换，可以保存基准值再去处理
  */
 public class QuickSort {
     public static void main(String[] args) {
