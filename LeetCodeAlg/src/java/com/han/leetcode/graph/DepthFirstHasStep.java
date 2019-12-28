@@ -1,13 +1,10 @@
 package com.han.leetcode.graph;
 
-import org.omg.PortableInterceptor.INACTIVE;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
-public class DepthFirst {
+public class DepthFirstHasStep {
     private int[] dx = {1,-1,0,0};
     private int[] dy = {0,0,1,-1};
     public static void main(String[] args) {
@@ -23,7 +20,7 @@ public class DepthFirst {
 //        DepthFirstRec depthFirstRec = new DepthFirstRec();
 //        depthFirstRec.method1(graph,S,E);
 
-        DepthFirst depthFirst = new DepthFirst();
+        DepthFirstHasStep depthFirst = new DepthFirstHasStep();
         depthFirst.method2(graph,S,E);
 
     }
@@ -31,14 +28,11 @@ public class DepthFirst {
 
 
     private  void method2(int[][] graph, int[] S, int[] E){
-        List<Integer[]> route = new ArrayList<>();
         Stack<Integer[]> stack = new Stack<>();
         stack.push(new Integer[]{S[0],S[1]});
-        graph[S[0]][S[1]]=-1;
-        step(graph,E,route,stack);
-        for(Integer[] r:route){
-            System.out.print(String.format("[%s,%s] ==>",r[0],r[1]));
-        }
+        graph[S[0]][S[1]]=0;
+        step(graph,E,stack);
+        printGraph(graph);
 
     }
 
@@ -52,41 +46,30 @@ public class DepthFirst {
      * 5.初始节点加入栈后，立即标记为-1
      * @param graph
      * @param E
-     * @param route
      * @param stack
      */
-    private boolean step(int[][] graph, int[] E, List<Integer[]> route, Stack<Integer[]> stack){
+    private void step(int[][] graph, int[] E, Stack<Integer[]> stack){
         while (!stack.isEmpty()){
             Integer[] point = stack.pop();
-            graph[point[0]][point[1]]=-1;
-            route.add(point);
+
             int x = point[0];
             int y = point[1];
 
-            if(x == E[0] && y==E[1]){
-                return true;
-            }
 
-            boolean allNotSafe = true;
             for(int i=0;i<4;i++){
                 int tx = x+dx[i];   //-1,1,0
                 int ty = y+dy[i];   //2,2,3
 
 
-                if(isSafe(graph,tx,ty)){
-
+                if(isSafe(graph,tx,ty) && graph[tx][ty] > graph[x][y]+1){
+                    graph[tx][ty] = graph[x][y]+1;
                     Integer[] temp = {tx,ty};
                     stack.push(temp);
-                    allNotSafe=false;
 
                 }
             }
 
-            if(allNotSafe){
-                route.remove(route.size()-1);
-            }
         }
-        return false;
     }
 
     private boolean isSafe(int[][] graph,int x, int y){
