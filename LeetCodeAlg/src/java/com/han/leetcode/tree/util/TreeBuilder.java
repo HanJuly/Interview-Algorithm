@@ -5,9 +5,15 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class
-TreeBuilder {
+public class TreeBuilder {
 
+    public static void main(String[] args) {
+        Integer[] value = {1,2,3,4,5,6,7};
+        TreeNode<Integer> root = builder(value);
+        List<Integer> result = new ArrayList<>();
+        traversal(root,result);
+        System.out.println(result.toString());
+    }
     public static <T> TreeNode<T> builder(T[] val) {
         TreeNode<T> root = new TreeNode<T>();
         root.setValue(val[0]);
@@ -46,6 +52,12 @@ TreeBuilder {
     }
 
 
+    /**
+     * 层次遍历
+     * @param root
+     * @param <T>
+     * @return
+     */
     private static <T> List<List<T>> traversal(TreeNode<T> root) {
         Queue<TreeNode<T>> queue = new LinkedList<>();
         List<List<T>> result = new ArrayList<>();
@@ -79,14 +91,23 @@ TreeBuilder {
         }
     }
 
-    public static <T> void lookThrough(TreeNode<T> root, int bottomNodes) {
-        int wdith = bottomNodes + 1;
-        System.out.print(root.getValue());
-        System.out.println();
-        lookThrough(root.getLeft(),bottomNodes/2);
-        lookThrough(root.getRight(),bottomNodes/2);
 
+    /**
+     * 递归前序遍历
+     * @param root
+     * @param result
+     * @param <T>
+     * @return
+     */
+    public static <T> void traversal(TreeNode<T> root,List<T> result){
+        if(root == null)
+            return ;
+        traversal(root.getLeft(),result);
+        traversal(root.getRight(),result);
+        result.add(root.getValue());
     }
+
+
 
 
 }
