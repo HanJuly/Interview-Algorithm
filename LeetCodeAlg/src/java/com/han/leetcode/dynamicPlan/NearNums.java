@@ -13,5 +13,26 @@ package com.han.leetcode.dynamicPlan;
  * 状态转移方程 d[i] = d[i-2] + num[i]  或者  d[i] = d[i-1]
  */
 public class NearNums {
-    
+    public static void main(String[] args) {
+        int[] nums = {1,2,3,4,5,6,-7,8,9};
+        NearNums nearNums = new NearNums();
+        System.out.println(nearNums.maxNearNum(nums));
+
+    }
+
+    private int maxNearNum(int[] nums){
+        int d[] = new int[nums.length];
+        d[0] = nums[0];
+        d[1] = Math.max(nums[0],nums[1]);
+
+        int max = 0;
+        for(int i =2;i< nums.length; i++){
+             d[i] = Math.max(d[i-2] + nums[i],d[i-1]);
+
+             if(max < d[i])
+                 max =d[i];
+        }
+
+        return max;
+    }
 }
