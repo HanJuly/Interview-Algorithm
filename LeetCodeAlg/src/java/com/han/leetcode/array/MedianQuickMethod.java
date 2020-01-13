@@ -21,6 +21,7 @@ import java.util.Arrays;
  *使用快排思想，O(n)
  *
  * 1.求下标一定要用起始位置+你算出来的随机值
+ * 2.分布式的时候通过缩小基准值来代替缩小范围
  *
  */
 public class MedianQuickMethod {
