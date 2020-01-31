@@ -17,7 +17,9 @@ public class KMPMatcher {
     public static void main(String[] args) {
         String haystack = "ABAxAB";
         int[] ps = new KMPMatcher().prixSuffix(haystack);
+        int index = new KMPMatcher().indexof(haystack, "ABH", ps);
         System.out.println(Arrays.toString(ps));
+        System.out.println("位置："+index);
     }
 
     private int indexof(String s, String m, int[] ps) {
@@ -30,7 +32,7 @@ public class KMPMatcher {
                 j++;
                 i++;
             } else if(j > 0){//如果j移动过，表示lps数组有值可以进行跳跃否则只能继续比较开头
-                j = ps[i];
+                j = ps[j-1];
             }else {
                 i++;
             }
